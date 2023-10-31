@@ -4,12 +4,14 @@ def indica_posicao(psort,pesp):
         return lista
     else:  
         for i in range(len(psort)):
-            if psort[i] == pesp[i]:
+            menor_esp = pesp.lower()
+            menor_sort = psort.lower()
+            if menor_sort[i] == menor_esp[i]:
                 lista.append(0)
-            elif pesp[i] in psort :
+            elif menor_esp[i] in menor_sort :
                 lista.append(1)
             else: 
                 lista.append(2)
     return lista
 
-print(indica_posicao('bolem','Marco'))
+print(indica_posicao('Beatriz','Beatriz'))
