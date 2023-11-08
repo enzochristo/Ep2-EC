@@ -67,14 +67,17 @@ palavra_sorteada = d_sorteada['sorteada']
 
 def ajuda(pf):
     lista_aux = []
+    help = ''
     pf = palavras_filtradas
     x = 0
-    while x < 10 :
+    while x < 11 :
         w = random.randint(10,5000)
         lista_aux.append(pf[w])
         x+=1
-        if x == 9:
-            return lista_aux
+        if x == 10:
+            help = ', '.join(lista_aux)
+            help = help[:-1]
+            return help
 
 
         

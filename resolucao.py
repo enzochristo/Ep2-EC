@@ -9,7 +9,8 @@ print(' ============================='
 
 print('Comandos: \n .Para sair do jogo digite "desisto" ou algo que remeta a sair do jogo(Ex:''nao'',''sair'',''cansei'',''acabou'')\n .Para afirmar algo durante a jogatina, digite algo que remeta ao afirmativo(Ex:''sim'',''positivo'',''ss'',''s'')')
 
-lista_ajuda = ajuda(palavras_filtradas)
+
+
 
 print('Regras:'
 '\n- Você tem \033[94m6\033[0m tentativas para acertar uma palavra aleatória de 5 letras.'
@@ -27,9 +28,10 @@ lista_s = ['s','sss','certeza','com certeza','ss','sssssss','ssss','sim', 'posit
 w = 0
 i = 0
 continuar = True
-lpc = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','']
+lpc = ['']*30
 
 while continuar:
+    lista_ajuda = ajuda(palavras_filtradas)
     tentativas = d_sorteada['tentativas']
     especulada = d_sorteada['especuladas']
     if palavra_sorteada != '':
@@ -59,12 +61,12 @@ while continuar:
             if continuar:
                 d_sorteada = inicializa(palavras_filtradas)
                 palavra_sorteada = d_sorteada['sorteada']
-                lpc = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','']
+                lpc = [''] * 30
                 lista_ajuda = ajuda(palavras_filtradas)
                 continuar
             else:
-                time.sleep(1)
-                print('Até a proxima :)')
+                time.sleep(.3)
+                print('Até a proxima \033[94m:)\033[0m')
                 break
 
 
@@ -88,7 +90,7 @@ while continuar:
             lpc.insert(i,cor[j])
             i += 1    
         print('\033[94mINSPER:: TERMO\033[0m ')
-        print(f'Caso precise de ideias aqui estão algumas: {lista_ajuda}'   ';)')
+        print(f'Caso precise de ideias aqui estão algumas: {lista_ajuda}'' \033[94m;)\033[0m')
         print(
         '\t --- --- --- --- ---' 
         f'\n\t| {lpc[0]} | {lpc[1]} | {lpc[2]} | {lpc[3]} | {lpc[4]} |'
@@ -112,11 +114,11 @@ while continuar:
             if continuar:
                 d_sorteada = inicializa(palavras_filtradas)
                 palavra_sorteada = d_sorteada['sorteada']
-                lpc = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','']
+                lpc = ['']*30
                 lista_ajuda = ajuda(palavras_filtradas)
                 continuar
             else:
-                print('Até a proxima :]')
+                print('Até a proxima \033[94m:]\033[0m')
                 continuar = False
         elif palavra_escolhida == palavra_sorteada:
             w = 0
@@ -127,11 +129,11 @@ while continuar:
             if continuar:
                 d_sorteada = inicializa(palavras_filtradas)
                 palavra_sorteada = d_sorteada['sorteada']
-                lpc = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','']
+                lpc = [''] * 30
                 lista_ajuda = ajuda(palavras_filtradas)
                 continuar
             else:
-                print('Até a proxima ;)')
+                print('Até a proxima \033[94m:)\033[0m')
                 continuar = False
 
 
