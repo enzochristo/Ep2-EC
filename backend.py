@@ -76,7 +76,6 @@ def ajuda(pf):
         x+=1
         if x == 10:
             help = ', '.join(lista_aux)
-            help = help[:-1]
             return help
 
 
