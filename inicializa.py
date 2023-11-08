@@ -6,3 +6,4 @@ def inicializa(l):
     sorteada = random.choice(l)
     d = {'n':n ,'sorteada':sorteada, 'especuladas': especuladas, 'tentativas' : tentativas }
     return d
+#oi
