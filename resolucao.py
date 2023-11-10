@@ -127,6 +127,7 @@ while continuar:
             else:
                 print('Até a proxima \033[94m:]\033[0m')
                 continuar = False
+                
         
 
         
