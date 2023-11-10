@@ -29,6 +29,7 @@ w = 0
 i = 0
 continuar = True
 lpc = ['']*30
+d_tentativas = {1 : '\033[94mprimeira\033[0m' , 2: '\033[92msegunda\033[0m', 3: '\033[92mterceira\033[0m', 4: '\033[93mquarta\033[0m', 5: '\033[93mquinta\033[0m', 6: '\033[91msexta\033[0m '}
 
 while continuar:
     lista_ajuda = ajuda(palavras_filtradas)
@@ -39,7 +40,7 @@ while continuar:
             print('\n\nEstou sorteando uma palavra...')
             time.sleep(1)
             print('Já tenho uma palavra! Adivinhe-a, você consegue!')
-        w =1
+        w = 1
     if tentativas > 1 :
         time.sleep(.5)
         print(f'Você tem {tentativas} tentativas')
@@ -47,7 +48,7 @@ while continuar:
         time.sleep(.5) 
         print((f'Você tem {tentativas} tentativa'))
 
-    
+
     palavra_escolhida = input('Qual seu palpite ?').strip().lower()
 
 
@@ -106,7 +107,24 @@ while continuar:
         f'\n\t| {lpc[25]} | {lpc[26]} | {lpc[27]} | {lpc[28]} | {lpc[29]} |'
         '\n\t--- --- --- --- --- ')
 
-        if tentativas == 0:
+        
+        if palavra_escolhida == palavra_sorteada:
+            w = 0
+            i = 0
+            tent_acert = 6 - tentativas
+            print(f'Uau!! Você acertou! Parabens!! \nVocê acertou na {d_tentativas[tent_acert]} tentativa ')
+            time.sleep(.1)
+            continuar = input('Gostaria de jogar novamente ? ').strip().lower() in lista_s
+            if continuar:
+                d_sorteada = inicializa(palavras_filtradas)
+                palavra_sorteada = d_sorteada['sorteada']
+                lpc = [''] * 30
+                lista_ajuda = ajuda(palavras_filtradas)
+                continuar
+            else:
+                print('Até a proxima \033[94m:)\033[0m')
+                continuar = False
+        elif tentativas == 0:
             w = 0
             i = 0
             print(f'Não foi dessa vez, sinto muito :(\nMas por curiosidade, a palavra sorteada era "{palavra_sorteada}"')
@@ -120,21 +138,6 @@ while continuar:
             else:
                 print('Até a proxima \033[94m:]\033[0m')
                 continuar = False
-        elif palavra_escolhida == palavra_sorteada:
-            w = 0
-            i = 0
-            print('Uau!! Você acertou! Parabens!!')
-            time.sleep(.1)
-            continuar = input('Gostaria de jogar novamente ? ').strip().lower() in lista_s
-            if continuar:
-                d_sorteada = inicializa(palavras_filtradas)
-                palavra_sorteada = d_sorteada['sorteada']
-                lpc = [''] * 30
-                lista_ajuda = ajuda(palavras_filtradas)
-                continuar
-            else:
-                print('Até a proxima \033[94m:)\033[0m')
-                continuar = False
-
+        
 
         
