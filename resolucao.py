@@ -1,17 +1,11 @@
 from backend import palavras_filtradas,palavra_sorteada,coloracao,indica_posicao,d_sorteada,ajuda,inicializa
 import time
-
 print(' ============================='
 '\n|                            |'
 '\n| Bem-vindo ao Insper Termo  |'
 '\n|                            |'
 '\n===== Design de Software =====')
-
 print('Comandos: \n .Para sair do jogo digite "desisto" ou algo que remeta a sair do jogo(Ex:''nao'',''sair'',''cansei'',''acabou'')\n .Para afirmar algo durante a jogatina, digite algo que remeta ao afirmativo(Ex:''sim'',''positivo'',''ss'',''s'')')
-
-
-
-
 print('Regras:'
 '\n- Você tem \033[94m6\033[0m tentativas para acertar uma palavra aleatória de 5 letras.'
 '\n- A cada tentativa, a palavra testada terá suas letras coloridas conforme:'
@@ -28,8 +22,8 @@ lista_s = ['s','sss','certeza','com certeza','ss','sssssss','ssss','sim', 'posit
 w = 0
 i = 0
 continuar = True
-lpc = ['']*30
-d_tentativas = {1 : '\033[94mprimeira\033[0m' , 2: '\033[92msegunda\033[0m', 3: '\033[92mterceira\033[0m', 4: '\033[93mquarta\033[0m', 5: '\033[93mquinta\033[0m', 6: '\033[91msexta\033[0m '}
+lpc = [' ']*30
+d_tentativas = {1 : '\033[94mprimeira\033[0m' , 2: '\033[92msegunda\033[0m', 3: '\033[92mterceira\033[0m', 4: '\033[93mquarta\033[0m', 5: '\033[93mquinta\033[0m', 6: '\033[91msexta\033[0m'}
 
 while continuar:
     lista_ajuda = ajuda(palavras_filtradas)
@@ -48,9 +42,7 @@ while continuar:
         time.sleep(.5) 
         print((f'Você tem {tentativas} tentativa'))
 
-
     palavra_escolhida = input('Qual seu palpite ?').strip().lower()
-
 
     if palavra_escolhida in ['desisto','nao','cansei','parar','quit','sair','desistir']:
         final = input('Tem certeza que deseja sair? ').strip().lower()
@@ -62,7 +54,7 @@ while continuar:
             if continuar:
                 d_sorteada = inicializa(palavras_filtradas)
                 palavra_sorteada = d_sorteada['sorteada']
-                lpc = [''] * 30
+                lpc = ['  '] * 30
                 lista_ajuda = ajuda(palavras_filtradas)
                 continuar
             else:
@@ -70,16 +62,14 @@ while continuar:
                 print('Até a proxima \033[94m:)\033[0m')
                 break
 
-
     elif len(palavra_escolhida) != 5:
         print('Apenas palavras com 5 letras')
 
     elif palavra_escolhida not in palavras_filtradas:
         print('Palavra desconhecida')
 
-
     elif palavra_escolhida in especulada:
-        print('palavra já testada!')
+        print('Palavra já testada!')
 
     else:
         lista_de_numeros = indica_posicao(palavra_sorteada,palavra_escolhida)
@@ -101,13 +91,12 @@ while continuar:
         f'\n\t| {lpc[10]} | {lpc[11]} | {lpc[12]} | {lpc[13]} | {lpc[14]} |'
         '\n\t --- --- --- --- --- '
         f'\n\t| {lpc[15]} | {lpc[16]} | {lpc[17]} | {lpc[18]} | {lpc[19]} |'
-       '\n\t--- --- --- --- --- '
+       '\n\t --- --- --- --- --- '
         f'\n\t| {lpc[20]} | {lpc[21]} | {lpc[22]} | {lpc[23]} | {lpc[24]} |'
-       '\n\t--- --- --- --- --- '
+       '\n\t --- --- --- --- --- '
         f'\n\t| {lpc[25]} | {lpc[26]} | {lpc[27]} | {lpc[28]} | {lpc[29]} |'
-        '\n\t--- --- --- --- --- ')
+        '\n\t --- --- --- --- --- ')
 
-        
         if palavra_escolhida == palavra_sorteada:
             w = 0
             i = 0
